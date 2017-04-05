@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Chathan Driehuys
+  description: Install and configure UFW.
+  license: MIT
+
+  min_ansible_version: 1.6
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - xenial
+
+  galaxy_tags:
+    - firewall
+    - ufw
+
+dependencies: []
