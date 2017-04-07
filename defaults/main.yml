@@ -1,0 +1,14 @@
+---
+apt_cache_time: 3600
+ssh_port: 22
+
+# Disable incoming traffic except ssh by default
+ufw_default_rules:
+  - direction: incoming
+    policy: deny
+  - port: "{{ ssh_port }}"
+    proto: tcp
+    rule: limit
+
+# Additional rules default to an empty list
+ufw_rules: []

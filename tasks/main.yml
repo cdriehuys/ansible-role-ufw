@@ -1,0 +1,20 @@
+---
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_time }}"
+
+- name: Configure firewall rules
+  ufw:
+    direction: "{{ item.direction | default(omit) }}"
+    policy: "{{ item.policy | default(omit) }}"
+    port: "{{ item.port | default(omit) }}"
+    proto: "{{ item.proto | default(omit) }}"
+    rule: "{{ item.rule | default(omit) }}"
+  with_items: "{{ ufw_default_rules + ufw_rules }}"
+
+- name: Enable UFW
+  ufw:
+    state: enabled
